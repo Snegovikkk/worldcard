@@ -23,6 +23,8 @@ body {
   background-color: #f7f9fc;
   color: #0a1f3c;
   overflow-x: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 a {
@@ -894,11 +896,23 @@ body.nav-open .nav-toggle span:nth-child(3) {
   justify-content: center;
 }
 
-.section-heading {
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto 56px;
-}
+  .section-heading {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 56px;
+    padding: 0 5vw;
+    box-sizing: border-box;
+  }
+
+  .section-heading h2 {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .section-heading p {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
 
 .eyebrow {
   text-transform: uppercase;
@@ -1169,10 +1183,25 @@ section.fade-in {
   .hero-content {
     flex-direction: column;
     gap: 40px;
+    padding: 0 5vw;
+    box-sizing: border-box;
   }
 
   .hero-content > div:first-child {
     max-width: 100%;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .hero p {
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .hero-visual {
@@ -1200,6 +1229,30 @@ section.fade-in {
 
   .cards-grid {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    padding: 0 5vw;
+    box-sizing: border-box;
+  }
+
+  .card {
+    padding: 24px 20px;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .card h3 {
+    font-size: 1.5rem;
+    word-break: break-word;
+  }
+
+  .card ul {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .card li {
+    font-size: 0.9rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .features-grid {
@@ -1274,13 +1327,59 @@ section.fade-in {
     padding: 0 20px 20px;
   }
 
+  .contact {
+    padding: 60px 5vw 80px;
+  }
+
   .contact-card {
     flex-direction: column;
-    padding: 32px;
+    padding: 32px 24px;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .contact-cta {
     max-width: none;
+    padding: 32px 24px;
+    box-sizing: border-box;
+  }
+
+  .contact h2 {
+    font-size: 1.8rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .contact .section-lead {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .contact-list a {
+    font-size: 1.1rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    display: inline-block;
+  }
+
+  .contact-list li {
+    padding: 16px;
+    gap: 16px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .contact-info {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .contact-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+    flex-shrink: 0;
   }
 }
 
@@ -1404,149 +1503,22 @@ section.fade-in {
   font-size: 0.85rem;
 }
 
-.footer-bottom-links {
+.footer-bottom-info {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   align-items: flex-end;
+  text-align: right;
+  max-width: 600px;
+  min-width: 500px;
 }
 
-.footer-bottom-links a {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 0.85rem;
-  transition: color 0.2s ease;
-  white-space: nowrap;
-}
-
-.footer-bottom-links a:hover {
-  color: white;
-}
-
-/* Модальное окно политики конфиденциальности */
-.privacy-modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10000;
-  align-items: center;
-  justify-content: center;
-}
-
-.privacy-modal.active {
-  display: flex;
-}
-
-.privacy-modal-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(10, 31, 60, 0.85);
-  backdrop-filter: blur(8px);
-}
-
-.privacy-modal-content {
-  position: relative;
-  background: white;
-  border-radius: 24px;
-  max-width: 800px;
-  width: 90%;
-  max-height: 90vh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 20px 60px rgba(10, 31, 60, 0.3);
-  animation: modalFadeIn 0.3s ease;
-}
-
-@keyframes modalFadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9) translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-.privacy-modal-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: rgba(10, 31, 60, 0.1);
-  border-radius: 50%;
-  font-size: 28px;
-  color: var(--bg-dark);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  transition: all 0.2s ease;
-  line-height: 1;
-  padding: 0;
-}
-
-.privacy-modal-close:hover {
-  background: rgba(10, 31, 60, 0.2);
-  transform: rotate(90deg);
-}
-
-.privacy-modal-title {
-  font-size: 2rem;
-  color: var(--bg-dark);
+.footer-bottom-info p {
   margin: 0;
-  padding: 40px 40px 20px;
-  border-bottom: 1px solid rgba(10, 31, 60, 0.1);
-}
-
-.privacy-modal-body {
-  padding: 30px 40px 40px;
-  overflow-y: auto;
-  flex: 1;
-  line-height: 1.8;
-  color: #2a3d55;
-}
-
-.privacy-modal-body h3 {
-  font-size: 1.5rem;
-  color: var(--bg-dark);
-  margin-top: 30px;
-  margin-bottom: 15px;
-}
-
-.privacy-modal-body h4 {
-  font-size: 1.2rem;
-  color: var(--bg-dark);
-  margin-top: 25px;
-  margin-bottom: 12px;
-}
-
-.privacy-modal-body p {
-  margin-bottom: 15px;
-}
-
-.privacy-modal-body ul {
-  margin-left: 20px;
-  margin-bottom: 20px;
-}
-
-.privacy-modal-body li {
-  margin-bottom: 8px;
-}
-
-.privacy-modal-body a {
-  color: var(--bg-dark);
-  text-decoration: underline;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  white-space: nowrap;
 }
 
 @media (max-width: 768px) {
@@ -1566,30 +1538,32 @@ section.fade-in {
     gap: 20px;
   }
 
-  .footer-bottom-links {
+  .footer-bottom-info {
     align-items: center;
+    text-align: center;
+    max-width: 100%;
+    min-width: auto;
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
   }
 
-  .privacy-modal-content {
-    width: 95%;
-    max-height: 95vh;
+  .footer-bottom-info p {
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
   }
 
-  .privacy-modal-title {
-    font-size: 1.5rem;
-    padding: 30px 30px 15px;
+  .footer-bottom {
+    padding-left: 5vw;
+    padding-right: 5vw;
+    box-sizing: border-box;
   }
 
-  .privacy-modal-body {
-    padding: 20px 30px 30px;
-  }
-
-  .privacy-modal-close {
-    top: 15px;
-    right: 15px;
-    width: 35px;
-    height: 35px;
-    font-size: 24px;
+  .footer-bottom p {
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 }
 
@@ -1610,6 +1584,30 @@ section.fade-in {
   .footer-content {
     grid-template-columns: 1fr;
     gap: 32px;
+    padding: 0 5vw;
+    box-sizing: border-box;
+  }
+
+  .footer {
+    padding: 40px 5vw 20px;
+  }
+
+  .card h3 {
+    font-size: 1.6rem;
+  }
+
+  .card li {
+    font-size: 0.85rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .section-heading h2 {
+    font-size: 1.8rem;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
   }
 }
 
