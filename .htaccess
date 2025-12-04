@@ -1,0 +1,19 @@
+# Включаем модуль переписывания URL
+RewriteEngine On
+
+# Перенаправляем запросы без .html на файлы с .html
+# Если запрашивается /policy, перенаправляем на /policy.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# Убираем .html из URL в адресной строке (внешнее перенаправление)
+# Если кто-то заходит на /policy.html, перенаправляем на /policy
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1? [NC,L,R=301]
+
+# Убираем .html из URL для index.html
+RewriteCond %{THE_REQUEST} /index\.html [NC]
+RewriteRule ^ /? [NC,L,R=301]
+

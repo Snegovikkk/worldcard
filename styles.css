@@ -1896,6 +1896,9 @@ section.fade-in {
   text-align: right;
   max-width: 600px;
   min-width: 500px;
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
 }
 
 .footer-bottom-info p {
@@ -1912,18 +1915,16 @@ section.fade-in {
   font-size: 0.85rem;
   transition: color 0.2s ease;
   white-space: nowrap;
+  cursor: pointer;
+  pointer-events: auto;
+  position: relative;
+  z-index: 1;
+  display: block;
 }
 
 .footer-bottom-info a:hover {
   color: white;
   text-decoration: underline;
-}
-
-.footer-bottom-info > div {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  align-items: flex-end;
 }
 
 @media (max-width: 768px) {
@@ -1988,10 +1989,6 @@ section.fade-in {
     word-break: break-word;
     overflow-wrap: break-word;
     max-width: 100%;
-  }
-
-  .footer-bottom-info > div {
-    align-items: center;
   }
 
   .footer-bottom-info a {
