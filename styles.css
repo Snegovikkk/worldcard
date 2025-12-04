@@ -108,6 +108,11 @@ a {
 .logo {
   font-weight: 700;
   letter-spacing: 0.15em;
+  transition: opacity 0.2s ease;
+}
+
+.logo:hover {
+  opacity: 0.8;
 }
 
 .nav-links {
@@ -1901,6 +1906,26 @@ section.fade-in {
   white-space: nowrap;
 }
 
+.footer-bottom-info a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.footer-bottom-info a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.footer-bottom-info > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
+}
+
 @media (max-width: 768px) {
   .footer {
     padding: 40px 4vw 24px;
@@ -1963,6 +1988,15 @@ section.fade-in {
     word-break: break-word;
     overflow-wrap: break-word;
     max-width: 100%;
+  }
+
+  .footer-bottom-info > div {
+    align-items: center;
+  }
+
+  .footer-bottom-info a {
+    white-space: normal;
+    text-align: center;
   }
 
   .footer-bottom {
